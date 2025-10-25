@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Déclaration G12 - {{declaration_number}}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 10pt;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #000;
+            padding-bottom: 10px;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+        }
+        .section h3 {
+            margin-top: 0;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        .label {
+            font-weight: bold;
+            width: 60%;
+        }
+        .value {
+            text-align: right;
+            width: 40%;
+        }
+        .total-row {
+            background: #667eea;
+            color: white;
+            font-weight: bold;
+            font-size: 12pt;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 9pt;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>RÉPUBLIQUE ALGÉRIENNE DÉMOCRATIQUE ET POPULAIRE</h1>
+        <h2>DIRECTION GÉNÉRALE DES IMPÔTS</h2>
+        <h2>DÉCLARATION SÉRIE G N°12</h2>
+        <h3>Déclaration Mensuelle/Trimestrielle de TVA et TAP</h3>
+    </div>
+
+    <div class="section">
+        <h3>IDENTIFICATION DE L'ENTREPRISE</h3>
+        <table>
+            <tr>
+                <td class="label">Raison sociale:</td>
+                <td class="value">{{company_name}}</td>
+            </tr>
+            <tr>
+                <td class="label">NIF (Numéro d'Identification Fiscale):</td>
+                <td class="value">{{company_nif}}</td>
+            </tr>
+            <tr>
+                <td class="label">NIS (Numéro d'Identification Statistique):</td>
+                <td class="value">{{company_nis}}</td>
+            </tr>
+            <tr>
+                <td class="label">ART (Article du Registre du Commerce):</td>
+                <td class="value">{{company_art}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h3>PÉRIODE DE DÉCLARATION</h3>
+        <table>
+            <tr>
+                <td class="label">Du:</td>
+                <td class="value">{{period_start}}</td>
+            </tr>
+            <tr>
+                <td class="label">Au:</td>
+                <td class="value">{{period_end}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h3>I. CHIFFRE D'AFFAIRES</h3>
+        <table>
+            <tr>
+                <td class="label">Chiffre d'affaires HT taxable:</td>
+                <td class="value">{{ca_ht}} DA</td>
+            </tr>
+            <tr>
+                <td class="label">Chiffre d'affaires exonéré:</td>
+                <td class="value">{{ca_exonere}} DA</td>
+            </tr>
+            <tr class="total-row">
+                <td class="label">TOTAL CHIFFRE D'AFFAIRES:</td>
+                <td class="value">{{ca_total}} DA</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h3>II. TVA COLLECTÉE</h3>
+        <table>
+            <tr>
+                <td class="label">Base taxable à 19%:</td>
+                <td class="value">{{tva_19_base}} DA</td>
+            </tr>
+            <tr>
+                <td class="label">Montant TVA à 19%:</td>
+                <td class="value">{{tva_19_amount}} DA</td>
+            </tr>
+            <tr>
+                <td class="label">Base taxable à 9%:</td>
+                <td class="value">{{tva_9_base}} DA</td>
+            </tr>
+            <tr>
+                <td class="label">Montant TVA à 9%:</td>
+                <td class="value">{{tva_9_amount}} DA</td>
+            </tr>
+            <tr class="total-row">
+                <td class="label">TOTAL TVA COLLECTÉE:</td>
+                <td class="value">{{tva_collectee_total}} DA</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h3>III. TVA DÉDUCTIBLE</h3>
+        <table>
+            <tr>
+                <td class="label">TVA sur immobilisations:</td>
+                <td class="value">{{tva_ded_immo}} DA</td>
+            </tr>
+            <tr>
+                <td class="label">TVA sur biens et marchandises:</td>
+                <td class="value">{{tva_ded_biens}} DA</td>
+            </tr>
+            <tr>
+                <td class="label">TVA sur services:</td>
+                <td class="value">{{tva_ded_services}} DA</td>
+            </tr>
+            <tr class="total-row">
+                <td class="label">TOTAL TVA DÉDUCTIBLE:</td>
+                <td class="value">{{tva_deductible_total}} DA</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h3>IV. TVA DUE / CRÉDIT</h3>
+        <table>
+            <tr>
+                <td class="label">TVA due (Collectée - Déductible):</td>
+                <td class="value">{{tva_due}} DA</td>
+            </tr>
+            <tr>
+                <td class="label">Crédit de TVA reporté:</td>
+                <td class="value">{{tva_credit}} DA</td>
+            </tr>
+            <tr class="total-row">
+                <td class="label">TVA À PAYER:</td>
+                <td class="value">{{tva_a_payer}} DA</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h3>V. TAXE SUR L'ACTIVITÉ PROFESSIONNELLE (TAP)</h3>
+        <table>
+            <tr>
+                <td class="label">Base taxable TAP:</td>
+                <td class="value">{{tap_base}} DA</td>
+            </tr>
+            <tr>
+                <td class="label">Taux TAP:</td>
+                <td class="value">{{tap_rate}}%</td>
+            </tr>
+            <tr class="total-row">
+                <td class="label">MONTANT TAP À PAYER:</td>
+                <td class="value">{{tap_amount}} DA</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer">
+        <p><strong>Déclaration générée le:</strong> {{invoice_date}}</p>
+        <p><em>Document généré par ElAmira ERP - Conforme aux normes DGI</em></p>
+        <p>À déposer auprès de votre Centre des Impôts avant le 20 du mois suivant</p>
+    </div>
+</body>
+</html>

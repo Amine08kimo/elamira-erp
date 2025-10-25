@@ -1,0 +1,37 @@
+# ElAmira ERP - Dépendances Python
+# Application de gestion conforme aux normes algériennes
+
+# Framework GUI
+PyQt6==6.6.1
+PyQt6-Qt6==6.6.1
+PyQt6-sip==13.6.0
+
+# Base de données
+# SQLite est inclus dans Python standard library
+
+# Génération de rapports PDF
+weasyprint==60.1
+reportlab==4.0.9  # Pour génération PDF factures professionnelles
+# Dépendances de weasyprint
+Pillow==10.1.0
+pydyf==0.8.0
+cffi==1.16.0
+cairocffi==1.6.1
+tinycss2==1.2.1
+
+# Traitement de données
+pandas==2.1.4
+openpyxl==3.1.2  # Pour Excel
+
+# Graphiques (optionnel, pour le dashboard)
+matplotlib==3.8.2
+# Alternative: pyqtgraph==0.13.3
+
+# Utilitaires
+python-dateutil==2.8.2
+
+# Génération de codes-barres (optionnel)
+# python-barcode==0.15.1
+
+# Note: Vérifiez la compatibilité des versions avec votre système
+# Pour installer: pip install -r requirements.txt

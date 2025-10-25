@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Facture {{invoice_number}}</title>
+</head>
+<body>
+    <div class="header">
+        <h1>{{company_name}}</h1>
+        <p>{{company_address}}</p>
+        <p>Tél: {{company_phone}}</p>
+        <p><strong>NIF:</strong> {{company_nif}} | <strong>NIS:</strong> {{company_nis}} | <strong>ART:</strong> {{company_art}}</p>
+    </div>
+
+    <div class="invoice-title">
+        FACTURE N° {{invoice_number}}
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+        <div style="width: 45%;">
+            <h3>Informations Client</h3>
+            <p><strong>{{customer_name}}</strong></p>
+            <p>{{customer_address}}</p>
+            <p><strong>NIF:</strong> {{customer_nif}}</p>
+            <p><strong>NIS:</strong> {{customer_nis}}</p>
+            <p><strong>ART:</strong> {{customer_art}}</p>
+        </div>
+        
+        <div style="width: 45%; text-align: right;">
+            <p><strong>Date d'émission:</strong> {{invoice_date}}</p>
+            <p><strong>Date d'échéance:</strong> {{due_date}}</p>
+        </div>
+    </div>
+
+    <h3>Détail de la Facture</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Désignation</th>
+                <th class="text-right">Quantité</th>
+                <th class="text-right">Prix Unit. HT</th>
+                <th class="text-right">TVA</th>
+                <th class="text-right">Montant HT</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{lines_html}}
+        </tbody>
+    </table>
+
+    <div class="totals">
+        <table>
+            <tr>
+                <td>Total HT:</td>
+                <td class="text-right"><strong>{{amount_untaxed}} DA</strong></td>
+            </tr>
+            <tr>
+                <td>Total TVA:</td>
+                <td class="text-right">{{amount_tax}} DA</td>
+            </tr>
+            <tr>
+                <td>TAP:</td>
+                <td class="text-right">{{amount_tap}} DA</td>
+            </tr>
+            <tr>
+                <td>Timbre Fiscal:</td>
+                <td class="text-right">{{amount_stamp}} DA</td>
+            </tr>
+            <tr class="total-line">
+                <td>Total TTC:</td>
+                <td class="text-right"><strong>{{amount_total}} DA</strong></td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="clear: both;"></div>
+
+    <div class="footer">
+        <p><strong>Conditions de paiement:</strong> Selon accord commercial</p>
+        <p><em>Facture établie conformément aux réglementations de la DGI (Direction Générale des Impôts)</em></p>
+        <p style="text-align: center; margin-top: 20px;">
+            <strong>{{company_name}}</strong> - NIF: {{company_nif}}
+        </p>
+    </div>
+</body>
+</html>

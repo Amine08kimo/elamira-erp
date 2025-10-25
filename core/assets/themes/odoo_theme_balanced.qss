@@ -1,0 +1,876 @@
+/* 
+===============================================================================
+   ODOO v17+ THEME - VERSION ÉQUILIBRÉE
+   ElAmira ERP - UI/UX Optimale et Lisible
+===============================================================================
+
+   PRIORITÉS ÉQUILIBRÉES:
+   ✓ POLICES LISIBLES - Ni trop petites, ni trop grandes
+   ✓ BOXES GÉNÉREUSES - Cartes et zones spacieuses
+   ✓ BOUTONS CLIQUABLES - Avec support icônes/images
+   ✓ SLIDERS DYNAMIQUES - Arrondis et modernes
+   ✓ DESIGN PROFESSIONNEL - Équilibre parfait
+
+===============================================================================
+*/
+
+
+/* ============================================================================
+   BASE - Polices équilibrées
+   ============================================================================ */
+
+* {
+    font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
+    font-size: 14px;
+    color: #1A1A1A;
+}
+
+QMainWindow {
+    background-color: #F5F5F5;
+}
+
+QWidget {
+    background-color: transparent;
+    color: #1A1A1A;
+}
+
+
+/* ============================================================================
+   BOUTONS - Cliquables avec support images
+   ============================================================================ */
+
+QPushButton {
+    background-color: #FFFFFF;
+    border: 2px solid #D0D0D0;
+    border-radius: 8px;
+    padding: 10px 20px;
+    color: #1A1A1A;
+    font-size: 14px;
+    font-weight: 600;
+    min-height: 32px;
+    min-width: 90px;
+}
+
+QPushButton:hover {
+    background-color: #F0F0F0;
+    border-color: #A0A0A0;
+}
+
+QPushButton:pressed {
+    background-color: #E0E0E0;
+    border-color: #808080;
+}
+
+QPushButton:disabled {
+    background-color: #F9F9F9;
+    color: #B0B0B0;
+    border-color: #E0E0E0;
+}
+
+/* Bouton Primaire avec icônes */
+QPushButton#primaryBtn,
+QPushButton#newBtn {
+    background-color: #6750A4;
+    border: none;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 24px;
+    min-height: 38px;
+    icon-size: 20px;
+}
+
+QPushButton#primaryBtn:hover,
+QPushButton#newBtn:hover {
+    background-color: #5746A6;
+}
+
+QPushButton#primaryBtn:pressed,
+QPushButton#newBtn:pressed {
+    background-color: #4B3C96;
+}
+
+/* Bouton avec icône */
+QPushButton[icon] {
+    padding-left: 36px;
+    text-align: left;
+}
+
+/* Bouton Succès */
+QPushButton#successBtn {
+    background-color: #1E8E3E;
+    border: none;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 20px;
+}
+
+QPushButton#successBtn:hover {
+    background-color: #1A7B36;
+}
+
+/* Bouton Danger */
+QPushButton#dangerBtn {
+    background-color: #D93025;
+    border: none;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 20px;
+}
+
+QPushButton#dangerBtn:hover {
+    background-color: #C5281F;
+}
+
+
+/* ============================================================================
+   CARTES (QFrame) - Plus grandes et spacieuses
+   ============================================================================ */
+
+QFrame#card {
+    background-color: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    padding: 24px;
+    margin: 10px;
+}
+
+QFrame#kpiCard {
+    background-color: #FFFFFF;
+    border: 2px solid #E0E0E0;
+    border-left: 5px solid #6750A4;
+    border-radius: 10px;
+    padding: 28px;
+    min-height: 150px;
+    min-width: 220px;
+}
+
+QFrame#kanbanCard {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D0D0;
+    border-radius: 8px;
+    padding: 18px;
+    margin: 8px;
+    min-width: 280px;
+}
+
+QFrame#kanbanCard:hover {
+    border-color: #6750A4;
+    background-color: #FAFAFA;
+}
+
+
+/* ============================================================================
+   LABELS - Polices équilibrées
+   ============================================================================ */
+
+/* Titre de page - réduit */
+QLabel#pageTitle {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1A1A1A;
+    padding: 10px 0px 14px 0px;
+    margin: 0px;
+}
+
+/* Titre de section */
+QLabel#sectionTitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1A1A1A;
+    padding: 12px 0px 8px 0px;
+    margin: 0px;
+}
+
+/* Breadcrumb */
+QLabel#breadcrumb {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1A1A1A;
+    padding: 8px 0px;
+}
+
+/* Label de champ */
+QLabel#fieldLabel {
+    color: #5F6368;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 4px 0px;
+}
+
+/* Valeur KPI - équilibrée */
+QLabel#kpiValue {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1A1A1A;
+    padding: 6px 0px;
+}
+
+/* Label KPI */
+QLabel#kpiLabel {
+    font-size: 12px;
+    color: #5F6368;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* Trend KPI */
+QLabel#kpiTrend {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 0px;
+}
+
+/* Status badge */
+QLabel#statusBadge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+
+/* ============================================================================
+   TABLEAUX - Espacés et lisibles
+   ============================================================================ */
+
+QTableView,
+QTableWidget {
+    background-color: #FFFFFF;
+    alternate-background-color: #F9F9F9;
+    gridline-color: #E8E8E8;
+    border: 1px solid #D0D0D0;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+QHeaderView::section {
+    background-color: #F5F5F5;
+    color: #1A1A1A;
+    padding: 12px 10px;
+    border: none;
+    border-bottom: 2px solid #D0D0D0;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+QHeaderView::section:hover {
+    background-color: #E8E8E8;
+}
+
+QTableView::item,
+QTableWidget::item {
+    padding: 12px 10px;
+    border: none;
+    border-bottom: 1px solid #F0F0F0;
+    font-size: 14px;
+}
+
+QTableView::item:selected,
+QTableWidget::item:selected {
+    background-color: #E8F0FE;
+    color: #1A1A1A;
+}
+
+QTableView::item:hover,
+QTableWidget::item:hover {
+    background-color: #F5F5F5;
+}
+
+
+/* ============================================================================
+   CHAMPS DE SAISIE - Grands et clairs
+   ============================================================================ */
+
+QLineEdit,
+QTextEdit,
+QPlainTextEdit {
+    background-color: #FFFFFF;
+    border: 2px solid #D0D0D0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: #1A1A1A;
+    font-size: 14px;
+    min-height: 22px;
+}
+
+QLineEdit:focus,
+QTextEdit:focus,
+QPlainTextEdit:focus {
+    border-color: #6750A4;
+    background-color: #FAFAFA;
+}
+
+QLineEdit:disabled,
+QTextEdit:disabled,
+QPlainTextEdit:disabled {
+    background-color: #F5F5F5;
+    color: #A0A0A0;
+    border-color: #E0E0E0;
+}
+
+QLineEdit::placeholder,
+QTextEdit::placeholder {
+    color: #A0A0A0;
+    font-style: italic;
+}
+
+
+/* ============================================================================
+   COMBOBOX - Équilibrée
+   ============================================================================ */
+
+QComboBox {
+    background-color: #FFFFFF;
+    border: 2px solid #D0D0D0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: #1A1A1A;
+    font-size: 14px;
+    min-height: 22px;
+    min-width: 120px;
+}
+
+QComboBox:hover {
+    border-color: #A0A0A0;
+    background-color: #F9F9F9;
+}
+
+QComboBox:focus {
+    border-color: #6750A4;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 32px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+QComboBox::down-arrow {
+    image: url(core/assets/icons/chevron-down.png);
+    width: 14px;
+    height: 14px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #FFFFFF;
+    border: 2px solid #D0D0D0;
+    border-radius: 8px;
+    selection-background-color: #E8F0FE;
+    selection-color: #1A1A1A;
+    padding: 6px;
+    font-size: 14px;
+}
+
+QComboBox QAbstractItemView::item {
+    padding: 10px;
+    min-height: 28px;
+    border-radius: 4px;
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: #F5F5F5;
+}
+
+
+/* ============================================================================
+   LISTES - Espacées
+   ============================================================================ */
+
+QListView,
+QListWidget {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D0D0;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+QListView::item,
+QListWidget::item {
+    padding: 12px 10px;
+    border: none;
+    border-bottom: 1px solid #F0F0F0;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+QListView::item:selected,
+QListWidget::item:selected {
+    background-color: #E8F0FE;
+    color: #1A1A1A;
+}
+
+QListView::item:hover,
+QListWidget::item:hover {
+    background-color: #F5F5F5;
+}
+
+
+/* ============================================================================
+   CHECKBOXES ET RADIOBUTTONS - Équilibrés
+   ============================================================================ */
+
+QCheckBox,
+QRadioButton {
+    color: #1A1A1A;
+    font-size: 14px;
+    spacing: 8px;
+}
+
+QCheckBox::indicator,
+QRadioButton::indicator {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #D0D0D0;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+}
+
+QCheckBox::indicator:hover,
+QRadioButton::indicator:hover {
+    border-color: #6750A4;
+}
+
+QCheckBox::indicator:checked,
+QRadioButton::indicator:checked {
+    background-color: #6750A4;
+    border-color: #6750A4;
+    image: url(core/assets/icons/check.png);
+}
+
+QRadioButton::indicator {
+    border-radius: 9px;
+}
+
+QRadioButton::indicator:checked {
+    image: none;
+    background-color: #6750A4;
+    border: 5px solid #FFFFFF;
+    outline: 2px solid #6750A4;
+}
+
+
+/* ============================================================================
+   SPINBOX - Équilibrée
+   ============================================================================ */
+
+QSpinBox,
+QDoubleSpinBox {
+    background-color: #FFFFFF;
+    border: 2px solid #D0D0D0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: #1A1A1A;
+    font-size: 14px;
+    min-height: 22px;
+}
+
+QSpinBox:focus,
+QDoubleSpinBox:focus {
+    border-color: #6750A4;
+}
+
+QSpinBox::up-button,
+QSpinBox::down-button,
+QDoubleSpinBox::up-button,
+QDoubleSpinBox::down-button {
+    width: 24px;
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 4px;
+}
+
+QSpinBox::up-button:hover,
+QSpinBox::down-button:hover,
+QDoubleSpinBox::up-button:hover,
+QDoubleSpinBox::down-button:hover {
+    background-color: #E0E0E0;
+}
+
+
+/* ============================================================================
+   SCROLLBARS - Arrondies et dynamiques
+   ============================================================================ */
+
+QScrollBar:vertical {
+    background-color: transparent;
+    width: 12px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #C0C0C0;
+    min-height: 40px;
+    border-radius: 6px;
+    margin: 2px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #6750A4;
+}
+
+QScrollBar::handle:vertical:pressed {
+    background-color: #5746A6;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: transparent;
+}
+
+QScrollBar:horizontal {
+    background-color: transparent;
+    height: 12px;
+    margin: 0px;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #C0C0C0;
+    min-width: 40px;
+    border-radius: 6px;
+    margin: 2px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: #6750A4;
+}
+
+QScrollBar::handle:horizontal:pressed {
+    background-color: #5746A6;
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0px;
+}
+
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal {
+    background: transparent;
+}
+
+
+/* ============================================================================
+   SLIDERS - Arrondis et dynamiques
+   ============================================================================ */
+
+QSlider::groove:horizontal {
+    background-color: #E0E0E0;
+    height: 6px;
+    border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+    background-color: #6750A4;
+    width: 18px;
+    height: 18px;
+    margin: -6px 0;
+    border-radius: 9px;
+}
+
+QSlider::handle:horizontal:hover {
+    background-color: #5746A6;
+}
+
+QSlider::handle:horizontal:pressed {
+    background-color: #4B3C96;
+}
+
+QSlider::sub-page:horizontal {
+    background-color: #6750A4;
+    border-radius: 3px;
+}
+
+QSlider::groove:vertical {
+    background-color: #E0E0E0;
+    width: 6px;
+    border-radius: 3px;
+}
+
+QSlider::handle:vertical {
+    background-color: #6750A4;
+    width: 18px;
+    height: 18px;
+    margin: 0 -6px;
+    border-radius: 9px;
+}
+
+QSlider::handle:vertical:hover {
+    background-color: #5746A6;
+}
+
+QSlider::handle:vertical:pressed {
+    background-color: #4B3C96;
+}
+
+QSlider::sub-page:vertical {
+    background-color: #6750A4;
+    border-radius: 3px;
+}
+
+
+/* ============================================================================
+   TABS - Équilibrés
+   ============================================================================ */
+
+QTabWidget::pane {
+    border: 1px solid #D0D0D0;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    padding: 12px;
+}
+
+QTabBar::tab {
+    background-color: #F5F5F5;
+    border: 1px solid #D0D0D0;
+    padding: 10px 20px;
+    margin-right: 4px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    color: #5F6368;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 80px;
+}
+
+QTabBar::tab:hover {
+    background-color: #E8E8E8;
+    color: #1A1A1A;
+}
+
+QTabBar::tab:selected {
+    background-color: #FFFFFF;
+    color: #6750A4;
+    border-bottom: 3px solid #6750A4;
+    font-weight: 700;
+}
+
+
+/* ============================================================================
+   PROGRESSBAR - Dynamique
+   ============================================================================ */
+
+QProgressBar {
+    background-color: #F5F5F5;
+    border: 1px solid #D0D0D0;
+    border-radius: 8px;
+    text-align: center;
+    color: #1A1A1A;
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 22px;
+}
+
+QProgressBar::chunk {
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                      stop:0 #6750A4, stop:1 #7C5DBF);
+    border-radius: 7px;
+}
+
+
+/* ============================================================================
+   GROUPBOX - Équilibrée
+   ============================================================================ */
+
+QGroupBox {
+    border: 2px solid #D0D0D0;
+    border-radius: 8px;
+    margin-top: 14px;
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1A1A1A;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 4px 12px;
+    background-color: #FFFFFF;
+    color: #1A1A1A;
+    border-radius: 4px;
+}
+
+
+/* ============================================================================
+   DIALOGS - Modales
+   ============================================================================ */
+
+QDialog {
+    background-color: #FFFFFF;
+}
+
+QDialogButtonBox QPushButton {
+    min-width: 110px;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+
+/* ============================================================================
+   MENUBAR ET STATUSBAR
+   ============================================================================ */
+
+QMenuBar {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #D0D0D0;
+    padding: 6px;
+    font-size: 14px;
+}
+
+QMenuBar::item {
+    padding: 8px 14px;
+    background-color: transparent;
+    border-radius: 6px;
+}
+
+QMenuBar::item:selected {
+    background-color: #F5F5F5;
+}
+
+QMenuBar::item:pressed {
+    background-color: #E0E0E0;
+}
+
+QMenu {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D0D0;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+QMenu::item {
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+
+QMenu::item:selected {
+    background-color: #F5F5F5;
+}
+
+QMenu::separator {
+    height: 1px;
+    background-color: #E0E0E0;
+    margin: 6px 0px;
+}
+
+QMenu::icon {
+    padding-left: 10px;
+}
+
+QStatusBar {
+    background-color: #F5F5F5;
+    border-top: 1px solid #D0D0D0;
+    color: #5F6368;
+    font-size: 13px;
+    padding: 6px;
+}
+
+
+/* ============================================================================
+   TOOLTIPS - Lisibles
+   ============================================================================ */
+
+QToolTip {
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 13px;
+    opacity: 240;
+}
+
+
+/* ============================================================================
+   SPLITTER - Visible
+   ============================================================================ */
+
+QSplitter::handle {
+    background-color: #D0D0D0;
+    width: 2px;
+    height: 2px;
+}
+
+QSplitter::handle:hover {
+    background-color: #6750A4;
+}
+
+
+/* ============================================================================
+   CLASSES SPÉCIALES - Utilitaires
+   ============================================================================ */
+
+/* Badge de statut */
+.status-success {
+    background-color: #E6F4EA;
+    color: #1E8E3E;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.status-warning {
+    background-color: #FEF7E0;
+    color: #F9AB00;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.status-danger {
+    background-color: #FCE8E6;
+    color: #D93025;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.status-info {
+    background-color: #E8F0FE;
+    color: #1A73E8;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+/* Textes */
+.text-bold {
+    font-weight: 700;
+}
+
+.text-primary {
+    color: #6750A4;
+    font-weight: 600;
+}
+
+.text-secondary {
+    color: #5F6368;
+}
+
+.text-success {
+    color: #1E8E3E;
+    font-weight: 600;
+}
+
+.text-danger {
+    color: #D93025;
+    font-weight: 600;
+}

@@ -1,0 +1,788 @@
+/* 
+===============================================================================
+   ODOO v17+ THEME - VERSION 2 ULTRA LISIBLE
+   ElAmira ERP - UI/UX Professionnelle et Moderne
+===============================================================================
+
+   PRIORITÉS UI/UX:
+   ✓ LISIBILITÉ MAXIMALE - Textes grands et clairs
+   ✓ BOUTONS CLIQUABLES - Zones de clic généreuses
+   ✓ ICÔNES VISIBLES - Tailles augmentées
+   ✓ ESPACEMENT CONFORTABLE - Padding généreux
+   ✓ CONTRASTE OPTIMAL - Couleurs distinctes
+
+===============================================================================
+*/
+
+
+/* ============================================================================
+   BASE - Polices et couleurs générales
+   ============================================================================ */
+
+* {
+    font-family: "Segoe UI", "Roboto", "Arial", sans-serif;
+    font-size: 15px;
+    color: #1A1A1A;
+}
+
+QMainWindow {
+    background-color: #F5F5F5;
+}
+
+QWidget {
+    background-color: transparent;
+    color: #1A1A1A;
+}
+
+
+/* ============================================================================
+   BOUTONS - Grands et Cliquables
+   ============================================================================ */
+
+QPushButton {
+    background-color: #FFFFFF;
+    border: 2px solid #D0D0D0;
+    border-radius: 6px;
+    padding: 12px 24px;
+    color: #1A1A1A;
+    font-size: 15px;
+    font-weight: 600;
+    min-height: 36px;
+    min-width: 100px;
+}
+
+QPushButton:hover {
+    background-color: #F0F0F0;
+    border-color: #A0A0A0;
+}
+
+QPushButton:pressed {
+    background-color: #E0E0E0;
+    border-color: #808080;
+}
+
+QPushButton:disabled {
+    background-color: #F9F9F9;
+    color: #B0B0B0;
+    border-color: #E0E0E0;
+}
+
+/* Bouton Primaire - Action principale */
+QPushButton#primaryBtn,
+QPushButton#newBtn {
+    background-color: #6750A4;
+    border: none;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px 28px;
+    min-height: 42px;
+}
+
+QPushButton#primaryBtn:hover,
+QPushButton#newBtn:hover {
+    background-color: #5746A6;
+}
+
+QPushButton#primaryBtn:pressed,
+QPushButton#newBtn:pressed {
+    background-color: #4B3C96;
+}
+
+/* Bouton Succès */
+QPushButton#successBtn {
+    background-color: #1E8E3E;
+    border: none;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 24px;
+}
+
+QPushButton#successBtn:hover {
+    background-color: #1A7B36;
+}
+
+/* Bouton Danger */
+QPushButton#dangerBtn {
+    background-color: #D93025;
+    border: none;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 24px;
+}
+
+QPushButton#dangerBtn:hover {
+    background-color: #C5281F;
+}
+
+
+/* ============================================================================
+   CARTES (QFrame) - Grandes et visibles
+   ============================================================================ */
+
+QFrame#card {
+    background-color: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 8px;
+}
+
+QFrame#kpiCard {
+    background-color: #FFFFFF;
+    border: 2px solid #E0E0E0;
+    border-left: 5px solid #6750A4;
+    border-radius: 8px;
+    padding: 24px;
+    min-height: 140px;
+}
+
+QFrame#kanbanCard {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D0D0;
+    border-radius: 6px;
+    padding: 16px;
+    margin: 6px;
+}
+
+QFrame#kanbanCard:hover {
+    border-color: #6750A4;
+    background-color: #FAFAFA;
+}
+
+
+/* ============================================================================
+   LABELS - Textes GRANDS et lisibles
+   ============================================================================ */
+
+/* Titre de page principal */
+QLabel#pageTitle {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1A1A1A;
+    padding: 12px 0px 16px 0px;
+    margin: 0px;
+}
+
+/* Titre de section */
+QLabel#sectionTitle {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1A1A1A;
+    padding: 14px 0px 10px 0px;
+    margin: 0px;
+}
+
+/* Breadcrumb */
+QLabel#breadcrumb {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1A1A1A;
+    padding: 8px 0px;
+}
+
+/* Label de champ */
+QLabel#fieldLabel {
+    color: #5F6368;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 4px 0px;
+}
+
+/* Valeur KPI - TRÈS GRANDE */
+QLabel#kpiValue {
+    font-size: 36px;
+    font-weight: 700;
+    color: #1A1A1A;
+    padding: 8px 0px;
+}
+
+/* Label KPI */
+QLabel#kpiLabel {
+    font-size: 13px;
+    color: #5F6368;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* Trend KPI */
+QLabel#kpiTrend {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 4px 0px;
+}
+
+/* Status badge */
+QLabel#statusBadge {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+
+/* ============================================================================
+   TABLEAUX - Espacés et lisibles
+   ============================================================================ */
+
+QTableView,
+QTableWidget {
+    background-color: #FFFFFF;
+    alternate-background-color: #F9F9F9;
+    gridline-color: #E8E8E8;
+    border: 1px solid #D0D0D0;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+QHeaderView::section {
+    background-color: #F5F5F5;
+    color: #1A1A1A;
+    padding: 14px 10px;
+    border: none;
+    border-bottom: 2px solid #D0D0D0;
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+QHeaderView::section:hover {
+    background-color: #E8E8E8;
+}
+
+QTableView::item,
+QTableWidget::item {
+    padding: 14px 10px;
+    border: none;
+    border-bottom: 1px solid #F0F0F0;
+    font-size: 15px;
+}
+
+QTableView::item:selected,
+QTableWidget::item:selected {
+    background-color: #E8F0FE;
+    color: #1A1A1A;
+}
+
+QTableView::item:hover,
+QTableWidget::item:hover {
+    background-color: #F5F5F5;
+}
+
+
+/* ============================================================================
+   CHAMPS DE SAISIE - Grands et clairs
+   ============================================================================ */
+
+QLineEdit,
+QTextEdit,
+QPlainTextEdit {
+    background-color: #FFFFFF;
+    border: 2px solid #D0D0D0;
+    border-radius: 6px;
+    padding: 12px;
+    color: #1A1A1A;
+    font-size: 15px;
+    min-height: 24px;
+}
+
+QLineEdit:focus,
+QTextEdit:focus,
+QPlainTextEdit:focus {
+    border-color: #6750A4;
+    background-color: #FAFAFA;
+}
+
+QLineEdit:disabled,
+QTextEdit:disabled,
+QPlainTextEdit:disabled {
+    background-color: #F5F5F5;
+    color: #A0A0A0;
+    border-color: #E0E0E0;
+}
+
+QLineEdit::placeholder,
+QTextEdit::placeholder {
+    color: #A0A0A0;
+    font-style: italic;
+}
+
+
+/* ============================================================================
+   COMBOBOX - Grande et lisible
+   ============================================================================ */
+
+QComboBox {
+    background-color: #FFFFFF;
+    border: 2px solid #D0D0D0;
+    border-radius: 6px;
+    padding: 12px;
+    color: #1A1A1A;
+    font-size: 15px;
+    min-height: 24px;
+    min-width: 120px;
+}
+
+QComboBox:hover {
+    border-color: #A0A0A0;
+    background-color: #F9F9F9;
+}
+
+QComboBox:focus {
+    border-color: #6750A4;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 32px;
+}
+
+QComboBox::down-arrow {
+    image: url(core/assets/icons/chevron-down.png);
+    width: 16px;
+    height: 16px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #FFFFFF;
+    border: 2px solid #D0D0D0;
+    selection-background-color: #E8F0FE;
+    selection-color: #1A1A1A;
+    padding: 8px;
+    font-size: 15px;
+}
+
+QComboBox QAbstractItemView::item {
+    padding: 12px;
+    min-height: 32px;
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: #F5F5F5;
+}
+
+
+/* ============================================================================
+   LISTES - Grandes et espacées
+   ============================================================================ */
+
+QListView,
+QListWidget {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D0D0;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 15px;
+}
+
+QListView::item,
+QListWidget::item {
+    padding: 14px 12px;
+    border: none;
+    border-bottom: 1px solid #F0F0F0;
+    font-size: 15px;
+}
+
+QListView::item:selected,
+QListWidget::item:selected {
+    background-color: #E8F0FE;
+    color: #1A1A1A;
+}
+
+QListView::item:hover,
+QListWidget::item:hover {
+    background-color: #F5F5F5;
+}
+
+
+/* ============================================================================
+   CHECKBOXES ET RADIOBUTTONS - Plus grands
+   ============================================================================ */
+
+QCheckBox,
+QRadioButton {
+    color: #1A1A1A;
+    font-size: 15px;
+    spacing: 8px;
+}
+
+QCheckBox::indicator,
+QRadioButton::indicator {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #D0D0D0;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+}
+
+QCheckBox::indicator:hover,
+QRadioButton::indicator:hover {
+    border-color: #6750A4;
+}
+
+QCheckBox::indicator:checked,
+QRadioButton::indicator:checked {
+    background-color: #6750A4;
+    border-color: #6750A4;
+}
+
+QRadioButton::indicator {
+    border-radius: 10px;
+}
+
+
+/* ============================================================================
+   SPINBOX - Grande et claire
+   ============================================================================ */
+
+QSpinBox,
+QDoubleSpinBox {
+    background-color: #FFFFFF;
+    border: 2px solid #D0D0D0;
+    border-radius: 6px;
+    padding: 12px;
+    color: #1A1A1A;
+    font-size: 15px;
+    min-height: 24px;
+}
+
+QSpinBox:focus,
+QDoubleSpinBox:focus {
+    border-color: #6750A4;
+}
+
+QSpinBox::up-button,
+QSpinBox::down-button,
+QDoubleSpinBox::up-button,
+QDoubleSpinBox::down-button {
+    width: 24px;
+    background-color: #F5F5F5;
+    border: none;
+}
+
+QSpinBox::up-button:hover,
+QSpinBox::down-button:hover,
+QDoubleSpinBox::up-button:hover,
+QDoubleSpinBox::down-button:hover {
+    background-color: #E0E0E0;
+}
+
+
+/* ============================================================================
+   SCROLLBARS - Plus larges et visibles
+   ============================================================================ */
+
+QScrollBar:vertical {
+    background-color: #F5F5F5;
+    width: 14px;
+    margin: 0px;
+    border-radius: 7px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #C0C0C0;
+    min-height: 40px;
+    border-radius: 7px;
+    margin: 2px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: #A0A0A0;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QScrollBar:horizontal {
+    background-color: #F5F5F5;
+    height: 14px;
+    margin: 0px;
+    border-radius: 7px;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: #C0C0C0;
+    min-width: 40px;
+    border-radius: 7px;
+    margin: 2px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: #A0A0A0;
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0px;
+}
+
+
+/* ============================================================================
+   TABS - Grands et clairs
+   ============================================================================ */
+
+QTabWidget::pane {
+    border: 1px solid #D0D0D0;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    padding: 12px;
+}
+
+QTabBar::tab {
+    background-color: #F5F5F5;
+    border: 1px solid #D0D0D0;
+    padding: 12px 24px;
+    margin-right: 4px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    color: #5F6368;
+    font-size: 15px;
+    font-weight: 600;
+    min-width: 80px;
+}
+
+QTabBar::tab:hover {
+    background-color: #E8E8E8;
+    color: #1A1A1A;
+}
+
+QTabBar::tab:selected {
+    background-color: #FFFFFF;
+    color: #6750A4;
+    border-bottom: 3px solid #6750A4;
+    font-weight: 700;
+}
+
+
+/* ============================================================================
+   PROGRESSBAR - Grande et visible
+   ============================================================================ */
+
+QProgressBar {
+    background-color: #F5F5F5;
+    border: 1px solid #D0D0D0;
+    border-radius: 6px;
+    text-align: center;
+    color: #1A1A1A;
+    font-size: 14px;
+    font-weight: 600;
+    min-height: 24px;
+}
+
+QProgressBar::chunk {
+    background-color: #6750A4;
+    border-radius: 5px;
+}
+
+
+/* ============================================================================
+   GROUPBOX - Claire et espacée
+   ============================================================================ */
+
+QGroupBox {
+    border: 2px solid #D0D0D0;
+    border-radius: 6px;
+    margin-top: 16px;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1A1A1A;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 4px 12px;
+    background-color: #FFFFFF;
+    color: #1A1A1A;
+}
+
+
+/* ============================================================================
+   DIALOGS - Modales lisibles
+   ============================================================================ */
+
+QDialog {
+    background-color: #FFFFFF;
+}
+
+QDialogButtonBox QPushButton {
+    min-width: 120px;
+    padding: 12px 24px;
+    font-size: 15px;
+}
+
+
+/* ============================================================================
+   MENUBAR ET STATUSBAR - Plus grandes
+   ============================================================================ */
+
+QMenuBar {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #D0D0D0;
+    padding: 6px;
+    font-size: 15px;
+}
+
+QMenuBar::item {
+    padding: 10px 16px;
+    background-color: transparent;
+    border-radius: 4px;
+}
+
+QMenuBar::item:selected {
+    background-color: #F5F5F5;
+}
+
+QMenuBar::item:pressed {
+    background-color: #E0E0E0;
+}
+
+QMenu {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D0D0;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 15px;
+}
+
+QMenu::item {
+    padding: 12px 24px;
+    border-radius: 4px;
+}
+
+QMenu::item:selected {
+    background-color: #F5F5F5;
+}
+
+QMenu::separator {
+    height: 1px;
+    background-color: #E0E0E0;
+    margin: 6px 0px;
+}
+
+QStatusBar {
+    background-color: #F5F5F5;
+    border-top: 1px solid #D0D0D0;
+    color: #5F6368;
+    font-size: 14px;
+    padding: 8px;
+}
+
+
+/* ============================================================================
+   TOOLTIPS - Grands et lisibles
+   ============================================================================ */
+
+QToolTip {
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-size: 14px;
+    opacity: 240;
+}
+
+
+/* ============================================================================
+   SPLITTER - Plus visible
+   ============================================================================ */
+
+QSplitter::handle {
+    background-color: #D0D0D0;
+    width: 3px;
+    height: 3px;
+}
+
+QSplitter::handle:hover {
+    background-color: #6750A4;
+}
+
+
+/* ============================================================================
+   CLASSES SPÉCIALES - Utilitaires
+   ============================================================================ */
+
+/* Conteneur principal avec padding */
+.main-container {
+    padding: 24px;
+}
+
+/* Barre d'outils */
+.toolbar {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E0E0E0;
+    padding: 12px 16px;
+}
+
+/* Badge de statut */
+.status-success {
+    background-color: #E6F4EA;
+    color: #1E8E3E;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.status-warning {
+    background-color: #FEF7E0;
+    color: #F9AB00;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.status-danger {
+    background-color: #FCE8E6;
+    color: #D93025;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.status-info {
+    background-color: #E8F0FE;
+    color: #1A73E8;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+/* Texte en gras */
+.text-bold {
+    font-weight: 700;
+}
+
+/* Texte primaire */
+.text-primary {
+    color: #6750A4;
+    font-weight: 600;
+}
+
+/* Texte secondaire */
+.text-secondary {
+    color: #5F6368;
+}
+
+/* Texte succès */
+.text-success {
+    color: #1E8E3E;
+    font-weight: 600;
+}
+
+/* Texte danger */
+.text-danger {
+    color: #D93025;
+    font-weight: 600;
+}

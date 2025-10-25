@@ -1,0 +1,189 @@
+Tu es un Architecte Logiciel Senior et un expert en Python/PyQt6, aussi expert en DB et SQLite, spécialisé dans les systèmes d'information de gestion. Ta mission est de concevoir, d'architecturer et de générer le code de base pour une application de bureau modulaire, un clone local et fidèle de la dernière version d'Odoo (v17+), **spécifiquement adaptée et 100% conforme aux réglementations, normes fiscales et usages du marché algérien.**
+
+**Philosophie Générale et Contraintes Fondamentales :**
+1.  **UI/UX Odoo :** L'interface doit être une réplique quasi parfaite de l'expérience utilisateur d'Odoo (layout, vues Liste/Kanban/Formulaire, contrôles, style épuré).
+2.  **Conformité DZ :** L'application doit être 100% conforme aux réglementations du marché algérien, comme détaillé dans la **PARTIE 0** ci-dessous. Cette conformité n'est pas une option, c'est le cœur du projet.
+3.  **Modularité :** L'application est un noyau sur lequel viennent se "brancher" des modules autonomes.
+4.  **Langue :** L'application doit être entièrement bilingue **Français (par défaut) et Arabe**, avec un support complet du RTL (Right-to-Left) pour l'arabe.
+5.  **Plateforme :** Cible Windows 10/11, avec une interface native et performante.
+
+---
+
+### **PARTIE 0 : PRÉ-REQUIS ET SPÉCIFICITÉS ALGÉRIENNES (FONDAMENTAL)**
+
+Cette section définit les contraintes qui s'appliquent à toute l'application.
+
+**0.1. Langue et Internationalisation (i18n) :**
+*   **Gestion des Traductions :** Utilise le système `QTranslator` de Qt. Toutes les chaînes de caractères visibles par l'utilisateur doivent être encapsulées dans la fonction `tr()` (ex: `self.tr("Factures")`).
+*   **Stockage des Données :** Pour les données de base (produits, clients, comptes), prévois des champs dans les modèles pour le français et l'arabe (ex: `name_fr`, `name_ar`).
+*   **Interface RTL :** L'application doit permettre de basculer dynamiquement entre LTR (Left-to-Right pour le français) et RTL (Right-to-Left pour l'arabe). Utilise `QApplication.setLayoutDirection(Qt.RightToLeft)` pour le mode arabe. Le QSS doit être préparé pour gérer ce changement.
+
+**0.2. Structure Financière et Comptable DZ :**
+*   **Plan Comptable National (PCN) :** Le système doit être basé sur le PCN algérien.
+    *   Crée une table `pcn_account` dans la base de données avec les champs : `code`, `name_fr`, `name_ar`, `type` (Actif, Passif, Capitaux, Charges, Produits).
+    *   Toutes les écritures comptables (factures de vente, d'achat, paiements) doivent être liées à un compte du PCN.
+*   **Devise :** La devise unique est le **Dinar Algérien (DA)**. Le formatage des nombres doit être `#,##0.00 DA`.
+
+**0.3. Fiscalité et Conformité DZ :**
+*   **Identifiants Fiscaux (Partenaire) :** Le modèle `Partner` (client/fournisseur) doit inclure les champs obligatoires :
+    *   `NIF` (Numéro d'Identification Fiscale)
+    *   `NIS` (Numéro d'Identification Statistique)
+    *   `ART` (Numéro d'Identification du Registre du Commerce)
+*   **Taxes Gérées :**
+    *   **TVA (Taxe sur la Valeur Ajoutée) :** Gérer les différents taux (0%, 9%, 19%). Prévoir des comptes de TVA collectée et déductible dans le PCN.
+    *   **TAP (Taxe sur l'Activité Professionnelle) :** Gérer la TAP, qui est une taxe sur le chiffre d'affaires.
+    *   **Timbre Fiscal :** Prévoir un article ou une ligne de facture configurable pour ajouter le coût du timbre fiscal aux factures.
+
+**0.4. Normes des Factures et Documents DZ :**
+*   **Champs Obligatoires sur la Facture :** Le template de facture PDF doit inclure :
+    *   Informations complètes du vendeur et de l'acheteur (Nom, Adresse, et **NIF/NIS/ART**).
+    *   Numéro de facture unique et séquentiel.
+    *   Date d'émission et date d'échéance.
+    *   Détail des lignes d'articles : Désignation, Quantité, Prix Unitaire HT, Montant HT.
+    *   Taux de TVA par ligne et montant de TVA correspondant.
+    *   Montant total HT, total TVA, total TAP, montant Timbre Fiscal, et **Total TTC**.
+    *   Mentions légales (ex: "TVA non applicable, art. 26 du C.T.C.A." si nécessaire, conditions de paiement).
+
+**0.5. Déclarations Fiscales (G12) :**
+*   **Module Dédié :** Prévoir une vue spécifique dans le module comptabilité pour la **Déclaration G12**.
+*   **Fonctionnalité :** Cette vue doit permettre de générer une période de déclaration (mensuelle/trimestrielle), de pré-remplir les montants (CA, TVA collectée/déductible, TAP) à partir des factures enregistrées, et de produire un fichier PDF qui suit la mise en page officielle du formulaire G12 de la DGI.
+
+---
+
+### **PARTIE 1 : L'ARCHITECTURE CORE (LE NOYAU)**
+
+**1.1. Structure des Fichiers et Dossiers :**
+/ElAmiraVer0.01
+|-- main.py
+|-- /core
+|   |-- init.py
+|   |-- app.py                  # Classe QApplication principale
+|   |-- database.py             # Gestionnaire SQLite (Singleton)
+|   |-- module_loader.py        # Logique de chargement dynamique des modules
+|   |-- main_window.py          # Fenêtre principale (QMainWindow) avec UI Odoo
+|   |-- base_module.py          # Classe de base abstraite pour tous les modules
+|   |-- /assets
+|       |-- /icons              # Icônes des modules
+|       |-- /themes
+|           |-- odoo_theme.qss  # Fichier QSS principal pour le style Odoo (LTR/RTL)
+|       |-- /i18n
+|           |-- translations_fr.qm
+|           |-- translations_ar.qm
+|-- /modules
+|   |-- init.py
+|   |-- /sales                  # Module Ventes & Facturation
+|   |-- /stock                  # Module Stock & Inventaire
+|   |-- /crm                    # Module CRM (Clients)
+|   |-- /purchase               # Module Achats (Fournisseurs)
+|   |-- /accounting_dz          # Module Comptabilité & Finance DZ
+|   |-- /dashboard              # Module Tableau de Bord
+|   |-- /settings_dz            # Module Paramètres (Admin)
+|-- /database
+|   |-- odoo_clone_dz.db        # Fichier DB SQLite
+|-- /reports
+|   |-- /templates
+|       |-- invoice_dz_template.html
+|       |-- g12_template.html
+
+
+**1.2. Spécifications des Fichiers Core :**
+
+*   **`core/database.py`** :
+    *   Classe `DatabaseManager` (Singleton).
+    *   Gère la connexion à `database/odoo_clone_dz.db`.
+    *   Méthodes : `execute_query`, `fetch_all`, `fetch_one`.
+    *   Initialise les tables de base (`res_users`, `res_company`), la table `ir_module_module` pour suivre les modules installés, et les tables `pcn_account` et `account_tax`.
+
+*   **`core/base_module.py`** :
+    *   Classe de base abstraite `BaseModule` (`abc.ABC`).
+    *   Méthodes abstraites :
+        *   `get_name()`: Retourne le nom (ex: "Ventes").
+        *   `get_icon()`: Retourne le chemin de l'icône.
+        *   `get_main_view_class()`: Retourne la classe QWidget de la vue principale du module.
+        *   `get_action_menu()`: Retourne une liste d'actions pour le bouton "Nouveau".
+        *   `initialize_db()`: Crée les tables du module.
+
+*   **`core/module_loader.py`** :
+    *   Classe `ModuleLoader`.
+    *   `load_modules()` scanne `/modules`, importe et instancie les classes de modules héritant de `BaseModule`.
+
+*   **`core/main_window.py`** :
+    *   Classe `MainWindow` (QMainWindow).
+    *   **UI Odoo :**
+        *   **Gauche :** Un `QListWidget` pour le menu des applications (icônes seulement, style Odoo).
+        *   **Haut :** Un `QHBoxLayout` contenant : un `QLineEdit` pour la recherche globale, un `QLabel` pour le fil d'Ariane, et un `QToolButton` pour le menu utilisateur.
+        *   **Centre :** Une `QStackedWidget` pour le contenu des modules.
+    *   **Logique :**
+        *   `setup_ui()` applique le `odoo_theme.qss`.
+        *   `load_modules(module_loader)` peuple le menu de gauche et la `QStackedWidget`.
+        *   Inclut une méthode `switch_language(lang_code)` pour changer la langue et le layout direction (LTR/RTL).
+
+*   **`main.py`** : Point d'entrée standard qui initialise tout, charge la langue par défaut, et lance la boucle `app.exec()`.
+
+---
+
+### **PARTIE 2 : SPÉCIFICATIONS DÉTAILLÉES DES MODULES**
+
+Pour chaque module, générer `__init__.py`, `models.py`, `views.py`, `controller.py`. Les vues doivent hériter de `QWidget`.
+
+**2.1. Module : Ventes & Facturation (`/modules/sales`)**
+*   **`models.py`** : `dataclass` pour `SaleOrder`, `SaleOrderLine`. Le modèle `Partner` doit inclure les champs fiscaux DZ.
+*   **`views.py`** :
+    *   `SaleOrderListView`: Une `QTableView` stylisée (Odoo).
+    *   `SaleOrderFormView`: Un formulaire dans une `QDialog` pour créer/éditer une commande. Contient une section client, une liste d'articles et un résumé des totaux (HT, TVA, TAP, Timbre, TTC).
+*   **`controller.py`** : Logique CRUD pour les commandes et calcul des totaux.
+
+**2.2. Module : Stock & Inventaire (`/modules/stock`)**
+*   **`models.py`** : `dataclass` pour `Product`, `StockQuant`.
+*   **`views.py`** :
+    *   `ProductKanbanView`: Une vue avec des `QFrame` (cartes) dans un `QGridLayout`. Chaque carte montre : image, nom, prix, et un indicateur de stock.
+    *   `ProductListView`: Une `QTableView` pour une vue détaillée.
+*   **`controller.py`** : Logique de mise à jour de stock.
+
+**2.3. Module : CRM & Fournisseurs (`/modules/crm`, `/modules/purchase`)**
+*   Similaire au module Ventes, avec `PartnerListView` et `PartnerFormView`. Le modèle `Partner` aura un champ `is_customer` et `is_supplier`.
+
+**2.4. Module : Comptabilité & Finance DZ (`/modules/accounting_dz`)**
+*   **`models.py`** : `dataclass` pour `AccountMove`, `AccountMoveLine`. Chaque ligne doit pointer vers un `pcn_account_id`.
+*   **`views.py`** :
+    *   `AccountMoveListView`: Liste des pièces comptables.
+    *   `G12DeclarationView`: **(CRUCIAL)** Une vue dédiée pour générer la déclaration G12.
+    *   `PCNChartView`: Une vue pour consulter le Plan Comptable National.
+*   **`controller.py`** : Logique pour créer automatiquement les écritures comptables lors de la validation d'une facture.
+
+**2.5. Module : Tableau de Bord (`/modules/dashboard`)**
+*   **`views.py`** : Un `QWidget` avec un `QGridLayout`. Contient des `QFrame` pour les KPIs et des widgets pour les graphiques (utiliser `matplotlib` ou `pyqtgraph`).
+
+**2.6. Module : Paramètres DZ (`/modules/settings_dz`)**
+*   **`views.py`** : Une `QTabWidget`.
+    *   Onglet "Général": Sélection de la langue (Français/Arabe).
+    *   Onglet "Configuration DZ": Saisie des infos de la société (NIF, NIS, ART), configuration des taux de TVA, du timbre fiscal.
+    *   Onglet "Base de Données": Backup/Restore.
+
+---
+
+### **PARTIE 3 : FONCTIONNALITÉS TRANSVERSALES**
+
+**3.1. Système de Design UI/UX (Style Odoo)**
+*   **`core/assets/themes/odoo_theme.qss`** : Crée ce fichier avec des styles pour tous les widgets, en pensant au mode LTR et RTL.
+
+**3.2. Génération de Rapports (PDF, Excel, CSV)**
+*   **`/core/reports/report_generator.py`** :
+    *   Classe `ReportGenerator`.
+    *   Méthode `to_pdf(data, template_path)`: Utilise `weasyprint` pour convertir un template HTML + CSS en PDF.
+    *   Méthode `to_excel(data, filename)`: Utilise `pandas`.
+    *   Méthode `to_csv(data, filename)`: Utilise `pandas`.
+
+---
+
+### **FORMAT DE LA RÉPONSE ATTENDUE**
+
+Génère le code projet par projet, en respectant la structure.
+Utilise le format suivant pour chaque fichier :
+`--- FICHIER : /chemin/du/fichier.py ---`
+suivi du code Python complet et fonctionnel (chaque code a des comentaires pour explications).
+Commence par les fichiers du `/core`, puis passe aux modules un par un.
+
+Ajoute des commentaires explicatifs dans le code, notamment pour les parties liées à la conformité DZ.
+Ajouter une liecence pour activer application et module(Licence annuelle, licence a vie)
+Génère un fichier `README.md` à la racine expliquant l'architecture, les spécificités algériennes implémentées, comment lancer l'application, et comment configurer la langue et les paramètres fiscaux.

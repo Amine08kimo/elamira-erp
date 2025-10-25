@@ -1,0 +1,195 @@
+═══════════════════════════════════════════════════════════════
+  🔧 INSTRUCTIONS MANUELLES - MISE À JOUR
+═══════════════════════════════════════════════════════════════
+
+PROBLÈME : Les scripts .bat ne fonctionnent pas dans PowerShell
+
+SOLUTION : Appliquer manuellement les changements
+
+
+═══════════════════════════════════════════════════════════════
+  ÉTAPE 1 : Nettoyer la Base de Données
+═══════════════════════════════════════════════════════════════
+
+1. Aller dans le dossier : database\
+
+2. Supprimer le fichier : odoo_clone_dz.db
+   (Clic droit → Supprimer)
+
+
+═══════════════════════════════════════════════════════════════
+  ÉTAPE 2 : Appliquer le Design Équilibré  
+═══════════════════════════════════════════════════════════════
+
+1. Aller dans : core\assets\themes\
+
+2. Copier le fichier : odoo_theme_balanced.qss
+
+3. Renommer la copie en : odoo_theme.qss
+   (Remplacer l'ancien si demandé)
+
+
+═══════════════════════════════════════════════════════════════
+  ÉTAPE 3 : Appliquer Dashboard Équilibré
+═══════════════════════════════════════════════════════════════
+
+1. Aller dans : modules\dashboard\
+
+2. Copier le fichier : views_balanced.py
+
+3. Renommer la copie en : views.py
+   (Remplacer l'ancien si demandé)
+
+
+═══════════════════════════════════════════════════════════════
+  ÉTAPE 4 : Vérifier Module Maintenance
+═══════════════════════════════════════════════════════════════
+
+1. Vérifier que le dossier existe : modules\maintenance\
+
+2. Le dossier doit contenir :
+   ✅ __init__.py
+   ✅ maintenance_module.py
+   ✅ models.py
+   ✅ controller.py
+   ✅ views.py
+
+3. Si le dossier manque, il a été créé mais pas sauvegardé
+
+
+═══════════════════════════════════════════════════════════════
+  ÉTAPE 5 : Lancer l'Application
+═══════════════════════════════════════════════════════════════
+
+Dans PowerShell :
+
+    cd "c:\Users\ms\Desktop\Application POS ALAMIRA@COM\ElAmiraVer0.01"
+    
+    python main.py
+
+
+═══════════════════════════════════════════════════════════════
+  ÉTAPE 6 : Se Connecter
+═══════════════════════════════════════════════════════════════
+
+Login    : admin
+Password : admin
+
+
+═══════════════════════════════════════════════════════════════
+  RÉSULTAT ATTENDU
+═══════════════════════════════════════════════════════════════
+
+MODULES DISPONIBLES :
+
+✅ Dashboard          - Vue d'ensemble
+✅ Ventes             - Machines + Pièces
+✅ Stock              - Inventaire
+✅ CRM                - Clients
+✅ Achats             - Fournisseurs
+✅ Comptabilité DZ    - Finances
+✅ Paramètres         - Configuration
+✅ Maintenance        - NOUVEAU ! Interventions + Contrats
+
+
+DESIGN APPLIQUÉ :
+
+✅ Police 14px (lisible)
+✅ Titres 18-22px
+✅ KPI 28px
+✅ Boutons 32-38px (cliquables)
+✅ Boxes 150px × 220px (spacieuses)
+✅ Sliders arrondis
+✅ Scrollbars stylées
+
+
+═══════════════════════════════════════════════════════════════
+  SI PROBLÈME : Base de Données Pleine
+═══════════════════════════════════════════════════════════════
+
+ERREUR : "database or disk is full"
+
+SOLUTION :
+
+1. Vérifier espace disque C:
+   - Doit avoir minimum 1 GB libre
+
+2. Nettoyer :
+   - Corbeille Windows
+   - Fichiers temporaires (%TEMP%)
+   - Téléchargements
+
+3. Ou déplacer application sur D: ou E:
+
+
+═══════════════════════════════════════════════════════════════
+  ALTERNATIVE : Utiliser PowerShell Script
+═══════════════════════════════════════════════════════════════
+
+Dans PowerShell (Administrateur) :
+
+    cd "c:\Users\ms\Desktop\Application POS ALAMIRA@COM\ElAmiraVer0.01"
+    
+    .\MISE_A_JOUR_RAPIDE.ps1
+
+Si erreur "scripts désactivés" :
+
+    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+    
+    .\MISE_A_JOUR_RAPIDE.ps1
+
+
+═══════════════════════════════════════════════════════════════
+  CHARGER DONNÉES MACHINES À COUDRE
+═══════════════════════════════════════════════════════════════
+
+Après premier lancement réussi :
+
+1. Fermer l'application
+
+2. Dans PowerShell :
+
+    python tools\load_sewing_machines_demo.py
+
+3. Relancer :
+
+    python main.py
+
+DONNÉES CHARGÉES :
+✅ 12 machines à coudre
+✅ 5 services maintenance
+✅ 5 clients
+✅ 15 documents (factures, proformas, etc.)
+
+
+═══════════════════════════════════════════════════════════════
+  AIDE
+═══════════════════════════════════════════════════════════════
+
+DOCUMENTATION :
+
+📚 GUIDE_COMPLET_MACHINES_COUDRE.md  - Guide utilisateur complet
+📚 GUIDE_VERSIONS_UI.md              - Comparaison des designs
+📚 DEVELOPPEMENT_FINAL_COMPLET.md    - Récapitulatif technique
+📚 SOLUTION_URGENTE.txt              - Dépannage DB pleine
+
+
+FICHIERS MODULES :
+
+modules/maintenance/
+├── __init__.py              - Initialisation
+├── maintenance_module.py    - Configuration module
+├── models.py                - Modèles de données
+├── controller.py            - Logique métier
+└── views.py                 - Interface utilisateur
+
+
+═══════════════════════════════════════════════════════════════
+
+  🪡 ElAmira ERP - Machines à Coudre
+  
+  8 Modules | 3 Designs | Documentation Complète
+  
+  © 2024 - Made with ❤️ in Algeria 🇩🇿
+
+═══════════════════════════════════════════════════════════════
