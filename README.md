@@ -24,7 +24,7 @@
 
 ## 🎯 Présentation
 
-**ElAmira ERP** est une application de gestion d'entreprise complète, développée en Python/PyQt6, qui reproduit l'expérience utilisateur d'Odoo tout en étant **100% conforme aux normes, réglementations fiscales et usages du marché algérien**.
+**ElAmira ERP** est une application de gestion d'entreprise complète, développée en Python/PyQt6, qui reproduit l'expérience utilisateur d'Odoo presque  lui rondre a 100% UX Like Odoo tout en étant **100% conforme aux normes, réglementations fiscales et usages du marché algérien**.
 
 ### Points Forts
 
