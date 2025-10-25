@@ -144,16 +144,24 @@ GitHub va vous demander de vous authentifier. Utilisez :
 
 ## 🔑 Créer un Personal Access Token
 
+⚠️ **SÉCURITÉ** : Ne JAMAIS inclure un token dans les fichiers du projet !
+
 Si vous n'avez pas encore de token :
 
 1. Allez sur : **https://github.com/settings/tokens**
 2. Cliquez sur **"Generate new token"** → **"Tokens (classic)"**
 3. Nom du token : `ElAmira ERP`
-4. Expiration : **No expiration** (ou 1 an)
+4. Expiration : **90 days** (recommandé pour la sécurité)
 5. **Permissions** : Cochez **`repo`** (tous les sous-items)
 6. Cliquez **"Generate token"**
 7. **⚠️ COPIEZ LE TOKEN** (vous ne le reverrez plus jamais !)
 8. Utilisez ce token comme mot de passe lors du push
+
+**⚠️ IMPORTANT** :
+- ❌ NE JAMAIS commiter un token dans Git
+- ❌ NE JAMAIS partager un token publiquement
+- ✅ Stocker le token localement en sécurité
+- ✅ Révoquer immédiatement si exposé
 
 ---
 

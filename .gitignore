@@ -77,3 +77,16 @@ settings.json
 # Cache
 .cache/
 .pytest_cache/
+
+# Secrets & Tokens (SÉCURITÉ)
+.env
+.env.local
+.env.*.local
+*.token
+*_token.txt
+*_token.md
+secrets/
+*.key
+*.pem
+github_token.txt
+SECURITE_TOKEN_URGENT.md
