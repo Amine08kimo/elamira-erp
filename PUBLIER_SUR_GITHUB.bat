@@ -45,11 +45,10 @@ echo   ÉTAPE 1/6 : Configuration Git
 echo ══════════════════════════════════════════════════════════════
 echo.
 
-REM Demander les informations utilisateur
-set /p GIT_NAME="Entrez votre nom: "
-set /p GIT_EMAIL="Entrez votre email: "
+REM Informations pré-configurées
+set GIT_NAME=Amine08kimo
+set GIT_EMAIL=contact.kimouchemohamed@gmail.com
 
-echo.
 echo Configuration de Git avec:
 echo   Nom: %GIT_NAME%
 echo   Email: %GIT_EMAIL%
@@ -146,9 +145,9 @@ echo.
 pause
 
 echo.
-set /p GITHUB_USER="Entrez votre nom d'utilisateur GitHub: "
+REM Nom d'utilisateur GitHub pré-configuré
+set GITHUB_USER=Amine08kimo
 
-echo.
 echo Configuration du dépôt distant:
 echo https://github.com/%GITHUB_USER%/elamira-erp.git
 echo.
