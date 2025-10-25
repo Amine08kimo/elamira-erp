@@ -5,7 +5,7 @@
 ![PyQt6](https://img.shields.io/badge/PyQt6-6.6+-orange.svg)
 ![License](https://img.shields.io/badge/license-Proprietary-red.svg)
 
-**Application de bureau modulaire, clone d'Odoo, 100% conforme aux réglementations algériennes**
+**Application de bureau modulaire, 100% conforme aux réglementations algériennes**
 
 ---
 
