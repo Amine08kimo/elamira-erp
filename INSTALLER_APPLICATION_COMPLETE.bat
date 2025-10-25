@@ -4,6 +4,7 @@ cls
 echo ══════════════════════════════════════════════════════════════
 echo   🪡 ElAmira ERP - MACHINES À COUDRE
 echo   Installation Complète et Configuration
+echo   Réaliser et développer par Mr Kimouche Mohamed
 echo ══════════════════════════════════════════════════════════════
 echo.
 
