@@ -498,10 +498,10 @@ L'utilisation de ce logiciel n'exonère pas l'utilisateur de ses obligations lé
 - ✅ Déclaration G12
 - ✅ Support bilingue FR/AR
 - ✅ Système de licences
-
+##### état actuel (tester a 50% de ces puissance)
 ---
 
-## 🎯 Roadmap
+## 🎯 Roadmap pour next hope
 
 ### v0.1.0
 - [ ] Module Achats complet
@@ -512,12 +512,15 @@ L'utilisation de ce logiciel n'exonère pas l'utilisateur de ses obligations lé
 
 ### v0.2.0
 - [ ] Mode multi-utilisateurs
-- [ ] Synchronisation cloud
-- [ ] Application mobile (Android/iOS)
+- [ ] Synchronisation serveurs et cloud (dans des feuture dév)
+
+ ### v0.3.0     
+- [ ] Application mobile (Android/iOS) 
 - [ ] Intégration e-commerce
 
 ---
 
-**© 2024 ElAmira ERP - Tous droits réservés**
+**© 2025 ElAmira ERP - Tous droits réservés**
+** Mr KIMOUCHE Mohamed ***
 
 *Made with ❤️ in Algeria 🇩🇿*
